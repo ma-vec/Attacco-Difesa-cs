@@ -28,42 +28,149 @@
         /// </summary>
         private void InitializeComponent()
         {
-            progressBar1 = new ProgressBar();
-            button1 = new Button();
+            progressBarG1 = new ProgressBar();
+            buttonStart = new Button();
+            progressBarG2 = new ProgressBar();
+            labelName1 = new Label();
+            labelRole1 = new Label();
+            labelRole2 = new Label();
+            labelName2 = new Label();
+            labelFerita1 = new Label();
+            labelFerita2 = new Label();
+            listBoxAttaccanti = new ListBox();
+            listBoxDifensori = new ListBox();
             SuspendLayout();
             // 
-            // progressBar1
+            // progressBarG1
             // 
-            progressBar1.Location = new Point(267, 146);
-            progressBar1.Name = "progressBar1";
-            progressBar1.Size = new Size(100, 23);
-            progressBar1.TabIndex = 0;
+            progressBarG1.Location = new Point(68, 117);
+            progressBarG1.Name = "progressBarG1";
+            progressBarG1.Size = new Size(179, 23);
+            progressBarG1.TabIndex = 0;
             // 
-            // button1
+            // buttonStart
             // 
-            button1.Location = new Point(545, 104);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 1;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            buttonStart.Location = new Point(713, 12);
+            buttonStart.Name = "buttonStart";
+            buttonStart.Size = new Size(75, 23);
+            buttonStart.TabIndex = 1;
+            buttonStart.Text = "START";
+            buttonStart.UseVisualStyleBackColor = true;
+            buttonStart.Click += button1_Click;
+            // 
+            // progressBarG2
+            // 
+            progressBarG2.Location = new Point(412, 117);
+            progressBarG2.Name = "progressBarG2";
+            progressBarG2.Size = new Size(179, 23);
+            progressBarG2.TabIndex = 2;
+            // 
+            // labelName1
+            // 
+            labelName1.AutoSize = true;
+            labelName1.Location = new Point(102, 54);
+            labelName1.Name = "labelName1";
+            labelName1.Size = new Size(38, 15);
+            labelName1.TabIndex = 3;
+            labelName1.Text = "label1";
+            // 
+            // labelRole1
+            // 
+            labelRole1.AutoSize = true;
+            labelRole1.Location = new Point(102, 86);
+            labelRole1.Name = "labelRole1";
+            labelRole1.Size = new Size(38, 15);
+            labelRole1.TabIndex = 4;
+            labelRole1.Text = "label2";
+            // 
+            // labelRole2
+            // 
+            labelRole2.AutoSize = true;
+            labelRole2.Location = new Point(448, 86);
+            labelRole2.Name = "labelRole2";
+            labelRole2.Size = new Size(38, 15);
+            labelRole2.TabIndex = 6;
+            labelRole2.Text = "label3";
+            // 
+            // labelName2
+            // 
+            labelName2.AutoSize = true;
+            labelName2.Location = new Point(448, 54);
+            labelName2.Name = "labelName2";
+            labelName2.Size = new Size(38, 15);
+            labelName2.TabIndex = 5;
+            labelName2.Text = "label4";
+            // 
+            // labelFerita1
+            // 
+            labelFerita1.AutoSize = true;
+            labelFerita1.Location = new Point(68, 160);
+            labelFerita1.Name = "labelFerita1";
+            labelFerita1.Size = new Size(38, 15);
+            labelFerita1.TabIndex = 7;
+            labelFerita1.Text = "label2";
+            // 
+            // labelFerita2
+            // 
+            labelFerita2.AutoSize = true;
+            labelFerita2.Location = new Point(412, 160);
+            labelFerita2.Name = "labelFerita2";
+            labelFerita2.Size = new Size(38, 15);
+            labelFerita2.TabIndex = 8;
+            labelFerita2.Text = "label2";
+            // 
+            // listBoxAttaccanti
+            // 
+            listBoxAttaccanti.FormattingEnabled = true;
+            listBoxAttaccanti.ItemHeight = 15;
+            listBoxAttaccanti.Location = new Point(412, 284);
+            listBoxAttaccanti.Name = "listBoxAttaccanti";
+            listBoxAttaccanti.Size = new Size(134, 154);
+            listBoxAttaccanti.TabIndex = 9;
+            // 
+            // listBoxDifensori
+            // 
+            listBoxDifensori.FormattingEnabled = true;
+            listBoxDifensori.ItemHeight = 15;
+            listBoxDifensori.Location = new Point(624, 284);
+            listBoxDifensori.Name = "listBoxDifensori";
+            listBoxDifensori.Size = new Size(134, 154);
+            listBoxDifensori.TabIndex = 10;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(button1);
-            Controls.Add(progressBar1);
+            Controls.Add(listBoxDifensori);
+            Controls.Add(listBoxAttaccanti);
+            Controls.Add(labelFerita2);
+            Controls.Add(labelFerita1);
+            Controls.Add(labelRole2);
+            Controls.Add(labelName2);
+            Controls.Add(labelRole1);
+            Controls.Add(labelName1);
+            Controls.Add(progressBarG2);
+            Controls.Add(buttonStart);
+            Controls.Add(progressBarG1);
             Name = "Form1";
             Text = "Form1";
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
-        private ProgressBar progressBar1;
-        private Button button1;
+        private ProgressBar progressBarG1;
+        private Button buttonStart;
+        private ProgressBar progressBarG2;
+        private Label labelName1;
+        private Label labelRole1;
+        private Label labelRole2;
+        private Label labelName2;
+        private Label labelFerita1;
+        private Label labelFerita2;
+        private ListBox listBoxAttaccanti;
+        private ListBox listBoxDifensori;
     }
 }

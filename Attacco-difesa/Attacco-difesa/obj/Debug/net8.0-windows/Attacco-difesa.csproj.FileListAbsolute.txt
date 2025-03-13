@@ -1,0 +1,17 @@
+F:\MRA\TPS\Attacco-Difesa-cs\Attacco-difesa\Attacco-difesa\bin\Debug\net8.0-windows\Attacco-difesa.exe
+F:\MRA\TPS\Attacco-Difesa-cs\Attacco-difesa\Attacco-difesa\bin\Debug\net8.0-windows\Attacco-difesa.deps.json
+F:\MRA\TPS\Attacco-Difesa-cs\Attacco-difesa\Attacco-difesa\bin\Debug\net8.0-windows\Attacco-difesa.runtimeconfig.json
+F:\MRA\TPS\Attacco-Difesa-cs\Attacco-difesa\Attacco-difesa\bin\Debug\net8.0-windows\Attacco-difesa.dll
+F:\MRA\TPS\Attacco-Difesa-cs\Attacco-difesa\Attacco-difesa\bin\Debug\net8.0-windows\Attacco-difesa.pdb
+F:\MRA\TPS\Attacco-Difesa-cs\Attacco-difesa\Attacco-difesa\obj\Debug\net8.0-windows\Attacco_difesa.Form1.resources
+F:\MRA\TPS\Attacco-Difesa-cs\Attacco-difesa\Attacco-difesa\obj\Debug\net8.0-windows\Attacco-difesa.csproj.GenerateResource.cache
+F:\MRA\TPS\Attacco-Difesa-cs\Attacco-difesa\Attacco-difesa\obj\Debug\net8.0-windows\Attacco-difesa.GeneratedMSBuildEditorConfig.editorconfig
+F:\MRA\TPS\Attacco-Difesa-cs\Attacco-difesa\Attacco-difesa\obj\Debug\net8.0-windows\Attacco-difesa.AssemblyInfoInputs.cache
+F:\MRA\TPS\Attacco-Difesa-cs\Attacco-difesa\Attacco-difesa\obj\Debug\net8.0-windows\Attacco-difesa.AssemblyInfo.cs
+F:\MRA\TPS\Attacco-Difesa-cs\Attacco-difesa\Attacco-difesa\obj\Debug\net8.0-windows\Attacco-difesa.csproj.CoreCompileInputs.cache
+F:\MRA\TPS\Attacco-Difesa-cs\Attacco-difesa\Attacco-difesa\obj\Debug\net8.0-windows\Attacco-difesa.sourcelink.json
+F:\MRA\TPS\Attacco-Difesa-cs\Attacco-difesa\Attacco-difesa\obj\Debug\net8.0-windows\Attacco-difesa.dll
+F:\MRA\TPS\Attacco-Difesa-cs\Attacco-difesa\Attacco-difesa\obj\Debug\net8.0-windows\refint\Attacco-difesa.dll
+F:\MRA\TPS\Attacco-Difesa-cs\Attacco-difesa\Attacco-difesa\obj\Debug\net8.0-windows\Attacco-difesa.pdb
+F:\MRA\TPS\Attacco-Difesa-cs\Attacco-difesa\Attacco-difesa\obj\Debug\net8.0-windows\Attacco-difesa.genruntimeconfig.cache
+F:\MRA\TPS\Attacco-Difesa-cs\Attacco-difesa\Attacco-difesa\obj\Debug\net8.0-windows\ref\Attacco-difesa.dll

@@ -8,8 +8,8 @@ namespace Attacco_difesa
 {
     class Gamer
     {
-        private int id;
-        public int Id { get; }
+        private string id;
+        public string Id { get; }
         private bool isFighter;
         public bool IsFighter { get; }
         private int puntiFerita;
@@ -19,21 +19,31 @@ namespace Attacco_difesa
         private int percDif;
         public int PercDif { get; }
 
-        public void SubisciAttacco(int valoreAttacco)
+        public void Attacca(int valoreAttacco, Gamer avversario)
         {
+//            if(!isFighter || avversario.IsFighter)
+  //              return;
+
             if (valoreAttacco >= percDif)
             { //il giocatore si para 50-100% danni
                 Random random = new Random();
                 int randomRiparazioneDanni = random.Next(50, 101); //riparazione in percentuale dei danni subiti
-                puntiFerita -= valoreAttacco - (valoreAttacco * randomRiparazioneDanni / 100);
+                avversario.puntiFerita -= ptdannoAttacco - (ptdannoAttacco * randomRiparazioneDanni / 100);
             } else //subisce tutti i danni
             {
-                puntiFerita -= valoreAttacco;
+                avversario.puntiFerita -= ptdannoAttacco;
             }
+        }
+        public void SwitchRole()
+        {
+            if(isFighter)
+                isFighter = false;
+            else
+                isFighter = true;
         }
 
 
-        public Gamer(int id, bool isFighter, int puntiFerita, int ptdannoAttacco, int percDif)
+        public Gamer(string id, bool isFighter, int puntiFerita, int ptdannoAttacco, int percDif)
         {
             Id = id;
             IsFighter = isFighter;
