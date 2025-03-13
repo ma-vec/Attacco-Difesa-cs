@@ -8,40 +8,13 @@ namespace Attacco_difesa
 {
     class Gamer
     {
-        private string id;
-        public string Id { get; }
-        private bool isFighter;
-        public bool IsFighter { get; }
-        private int puntiFerita;
-        public int PuntiFerita { get; }
-        private int ptdannoAttacco;
-        public int PtDannoAttacco { get; }
-        private int percDif;
-        public int PercDif { get; }
+        public string Id { get; private set; }
+        public bool IsFighter { get; private set; }
+        public int PuntiFerita { get; private set; }
+        public int PtDannoAttacco { get; private set; }
+        public int PercDif { get; private set; }
 
-        public void Attacca(int valoreAttacco, Gamer avversario)
-        {
-//            if(!isFighter || avversario.IsFighter)
-  //              return;
-
-            if (valoreAttacco >= percDif)
-            { //il giocatore si para 50-100% danni
-                Random random = new Random();
-                int randomRiparazioneDanni = random.Next(50, 101); //riparazione in percentuale dei danni subiti
-                avversario.puntiFerita -= ptdannoAttacco - (ptdannoAttacco * randomRiparazioneDanni / 100);
-            } else //subisce tutti i danni
-            {
-                avversario.puntiFerita -= ptdannoAttacco;
-            }
-        }
-        public void SwitchRole()
-        {
-            if(isFighter)
-                isFighter = false;
-            else
-                isFighter = true;
-        }
-
+        private static Random random = new Random();
 
         public Gamer(string id, bool isFighter, int puntiFerita, int ptdannoAttacco, int percDif)
         {
@@ -51,5 +24,30 @@ namespace Attacco_difesa
             PtDannoAttacco = ptdannoAttacco;
             PercDif = percDif;
         }
+
+        public int Attacca(Gamer avversario)
+        {
+            int percSingoloAttacco = random.Next(1, 101);
+
+            if (percSingoloAttacco >= avversario.PercDif)
+            {
+                // Il difensore riesce a parare parzialmente il colpo
+                int riduzioneDanni = random.Next(50, 101);
+                int danniEffettivi = PtDannoAttacco * (100 - riduzioneDanni) / 100;
+                avversario.PuntiFerita -= danniEffettivi;
+            }
+            else
+            {
+                // Subisce il danno pieno
+                avversario.PuntiFerita -= PtDannoAttacco;
+            }
+            return percSingoloAttacco;
+        }
+
+        public void SwitchRole()
+        {
+            IsFighter = !IsFighter;
+        }
     }
+
 }

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Attacco-difesa")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+639ddedd45ec9f8485182190a8a29d0bf77fce74")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+af6364307f956b0d1ebceb535ad7d40f8eea8bdf")]
 [assembly: System.Reflection.AssemblyProductAttribute("Attacco-difesa")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Attacco-difesa")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

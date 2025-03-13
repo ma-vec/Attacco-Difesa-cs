@@ -8,6 +8,7 @@ namespace Attacco_difesa
         List<Gamer> listaDifensori = new List<Gamer>();
         SemaphoreSlim SemaphoreAttaccanti = new SemaphoreSlim(1);
         SemaphoreSlim SemaphoreDifensori = new SemaphoreSlim(1);
+        bool ready = false; //definisce quando i giocatori sono pronti acombattere
         public Form1()
         {
             InitializeComponent();
@@ -48,100 +49,112 @@ namespace Attacco_difesa
                 Gamer difensore = new Gamer("D"+id.ToString(), false, randomPtiFerita, randomPtiAttacco, RandomPercDif);
                 id++;
                 listaDifensori.Add(difensore);
+                ready = true;
                 Thread trdDif = new Thread(() => FightTread());
                 trdDif.Start();
             }
             UpdateListBox();
+            
         }
 
         private void FightTread()
         {
-            try
+            if(ready) {
+            if (listaAttaccanti.Count >=1 && listaDifensori.Count >=1)
             {
-                //Trova i due giocatori
-                SemaphoreAttaccanti.Wait();
-                SemaphoreDifensori.Wait();
-                this.Invoke((MethodInvoker)delegate
+                try
                 {
-                    progressBarG1.Maximum = listaAttaccanti[0].PuntiFerita;
-                    progressBarG2.Maximum = listaDifensori[0].PuntiFerita;
-                });
-                //Inizia combattimento
-                IniziaCombattimento(listaAttaccanti[0], listaDifensori[0]);
+
+                    //Trova i due giocatori
+                    SemaphoreAttaccanti.Wait();
+                    SemaphoreDifensori.Wait();
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        progressBarG1.Maximum = listaAttaccanti[0].PuntiFerita;
+                        progressBarG2.Maximum = listaDifensori[0].PuntiFerita;
+                    
+                    //Inizia combattimento
+                    labelName1.Text = listaAttaccanti[0].Id.ToString() + $" (Attacco: {listaAttaccanti[0].PtDannoAttacco.ToString()} pt, Difesa: {listaAttaccanti[0].PercDif.ToString()}%)";
+                    labelName2.Text = listaDifensori[0].Id.ToString() + $" (Attacco: {listaDifensori[0].PtDannoAttacco.ToString()} pt, Difesa: {listaDifensori[0].PercDif.ToString()}%)";
+                    });
+                        IniziaCombattimento(listaAttaccanti[0], listaDifensori[0]);
+                }
+                catch (Exception ex)
+                {
+                    // Gestione di eccezioni non previste
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        MessageBox.Show($"Errore: {ex.Message}");
+                    });
+                }
+                finally
+                {
+                    SemaphoreDifensori.Release();
+                    SemaphoreAttaccanti.Release();
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        UpdateListBox();
+                    });
+                }
             }
-            catch (Exception ex)
+            else
             {
-                // Gestione di eccezioni non previste
-                this.Invoke((MethodInvoker)delegate
-                {
-                    MessageBox.Show($"Errore: {ex.Message}");
-                });
+                MessageBox.Show("Sono rimasti in vita " + listaAttaccanti.Count.ToString() + "e " + listaDifensori.Count.ToString() + " difensori");
             }
-            finally
-            {
-                SemaphoreDifensori.Release();
-                SemaphoreAttaccanti.Release();
-                this.Invoke((MethodInvoker)delegate
-                {
-                    UpdateListBox();
-                });
-            }
+           }
         }
 
         private void IniziaCombattimento(Gamer G1, Gamer G2)
         {
             while (G1.PuntiFerita > 0 && G2.PuntiFerita > 0)
             {
-                int percSingoloAttacco = random.Next(1, 101); //perc. casuale per ogni attacco
                 this.Invoke((MethodInvoker)delegate
                 {
-                    //MessageBox.Show(G1.PuntiFerita.ToString(), G2.PuntiFerita.ToString());
                     progressBarG1.Value = G1.PuntiFerita;
                     labelFerita1.Text = G1.PuntiFerita.ToString();
                     progressBarG2.Value = G2.PuntiFerita;
                     labelFerita2.Text = G2.PuntiFerita.ToString();
-                    labelName1.Text = percSingoloAttacco.ToString();
-                    if (G1.IsFighter) labelRole1.Text = "Attacante"; else labelRole1.Text = "Difensore";
-                    if (G2.IsFighter) labelRole2.Text = "Attacante"; else labelRole2.Text = "Difensore";
+
+                    if (G1.IsFighter) { labelRole1.Text = "Attaccante"; } else { labelRole1.Text = "Difensore"; };
+                    if (G2.IsFighter) { labelRole2.Text = "Attaccante"; } else { labelRole2.Text = "Difensore"; };
                 });
 
-                
-
-                if (G1.IsFighter == G2.IsFighter)
-                    G1.SwitchRole(); //se per errore hanno stesso ruolo, viene cambiato solo uno
-
-                //identifica l'attacante
                 if (G1.IsFighter)
                 {
-                    G1.Attacca(percSingoloAttacco, G2);
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        labelAtt1.Text = G1.Attacca(G2).ToString()+"%";
+                    });
                 }
-                else if (G2.IsFighter)
+                else
                 {
-                    G2.Attacca(percSingoloAttacco, G1);
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        labelAtt2.Text = G2.Attacca(G1).ToString() + "%";
+                    });
                 }
+
                 G1.SwitchRole();
                 G2.SwitchRole();
-
-            } //Combattimento terminato
-            if(G1.PuntiFerita<=0)
-            {
-                listaAttaccanti.RemoveAt(0);
-                this.Invoke((MethodInvoker)delegate
-                {
-                    MessageBox.Show("Vittoria G 2");
-                    UpdateListBox();
-                    
-                });
-            } else if(G2.PuntiFerita<=0)
-            {
-                listaDifensori.RemoveAt(0);
-                this.Invoke((MethodInvoker)delegate
-                {
-                    MessageBox.Show("Vittoria G 1");
-                    UpdateListBox();
-
-                });
+                Thread.Sleep(1000);
             }
+
+            this.Invoke((MethodInvoker)delegate
+            {
+                if (G1.PuntiFerita <= 0)
+                {
+                    listaAttaccanti.Remove(G1);
+                    MessageBox.Show($"Vittoria di {G2.Id}");
+                }
+                else
+                {
+                    listaDifensori.Remove(G2);
+                    MessageBox.Show($"Vittoria di {G1.Id}");
+                }
+                UpdateListBox();
+            });
         }
+
     }
 }
+
